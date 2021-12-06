@@ -3,7 +3,20 @@ const app = express();
 const { animals } = require('./data/animals');
 
 function filterByQuery(query, animalArray) {
+    let personalityTraitsArr = [];
     let filteredResults = animalArray;
+
+    if(query.personalityTraits) {
+        if(typeof query.personalityTraits === 'string')
+            personalityTraitsArr = [query.personalityTraits];
+        else 
+            personalityTraitsArr = query.personalityTraits;
+
+        personalityTraitsArr.forEach(trait => {
+            filteredResults = filteredResults.filter(animal => animal.personalityTraits.indexOf(trait) !== -1);
+        });
+    }
+
     if(query.diet)
         filteredResults = filteredResults.filter(animal => animal.diet === query.diet);
     if(query.species)
