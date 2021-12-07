@@ -2,7 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const { allowedNodeEnvironmentFlags } = require('process');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 80;
 const app = express();
 // parse incoming string or array data
 app.use(express.urlencoded({extended: true}));
@@ -77,6 +77,10 @@ app.get('/api/animals/:id', (req, res) => {
         res.json(result);
     else 
         res.sendStatus(404);
+});
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
 app.post('/api/animals', (req, res) => {
