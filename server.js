@@ -8,6 +8,9 @@ const app = express();
 app.use(express.urlencoded({extended: true}));
 // parse incoming JSON data
 app.use(express.json());
+
+app.use(express.static('public'));
+
 const { animals } = require('./data/animals');
 
 function filterByQuery(query, animalArray) {
