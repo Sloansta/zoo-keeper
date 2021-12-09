@@ -128,6 +128,15 @@
         "goofy"
       ],
       "id": "12"
+    },
+    {
+      "name": "Joe Rogan",
+      "species": "Monke",
+      "diet": "carnivore",
+      "personalityTraits": [
+        "hungry"
+      ],
+      "id": "13"
     }
   ]
 }
